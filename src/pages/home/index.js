@@ -1,5 +1,6 @@
 import { Container, BookList, Book } from "./styles.js";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
     const [books, setBooks] = useState([]);
@@ -8,7 +9,7 @@ function Home() {
         fetch("http://localhost:8000/rest/get-book?name=dracula")
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Erro na resposta da rede');
+                    throw new Error('Network response error');
                 }
                 return response.json();
             })
@@ -16,7 +17,7 @@ function Home() {
                 console.log(data);
                 setBooks(data.books || []);
             })
-            .catch(error => console.error('Erro ao buscar os livros:', error));
+            .catch(error => console.error('Error fetching books:', error));
     }, []);
     
     return (
@@ -24,20 +25,14 @@ function Home() {
             <h1>Books</h1>
             <BookList>
                 {books.map((book, index) => (
-                    <Book key={index}>
-                        <a href="https://bibliotecasaavedra.com.br/products/dracula-bram-stoker-nova-cultural?variant=41965203489012&currency=BRL&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gclid=CjwKCAjw9cCyBhBzEiwAJTUWNe5HP1F4wfyoToz4f35Nxrx5ko4PznKxTiPhkAokQHIj8bFfqM9rphoCrnEQAvD_BwE">
-                            <img src={book.image_url} alt={book.title} />
-                        </a>
+                    <Book key={book.id}>
+                        <Link to={`/details/${book.id}`}><img src={book.image_url} alt={book.title} /></Link>
                         <span>{book.title}</span>
                     </Book>
                 ))}
             </BookList>
-   
         </Container>
-
     );
-    
-    
 }
 
 export default Home;
