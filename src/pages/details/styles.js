@@ -1,8 +1,7 @@
-import { styled } from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.div`
-
- padding: 4rem 0:
+ padding: 4rem 0;
 
  h1 {
     margin: 3rem 0;
@@ -47,4 +46,23 @@ export const Container = styled.div`
     margin-bottom: 1rem;
     font-size: 100%;
  }
-`
+
+ .recommended {
+   margin-top: 20px;
+ }
+
+ .recommended-books {
+   display: flex;
+   gap: 20px;
+ }
+
+ .recommended-book {
+   flex: 1;
+   text-align: center;
+ }
+
+ .recommended-book img {
+   max-width: 100%;
+   height: auto;
+ }
+`;
