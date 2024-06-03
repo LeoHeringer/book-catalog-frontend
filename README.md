@@ -1,4 +1,4 @@
-# Book Catalog
+# 📚 Book Catalog
 
 This is the frontend of the Book Catalog project, where you can view details of specific books, along with recommendations of other books based on genre. This frontend consumes a backend developed in Django with Django REST Framework, which provides the necessary data to display book information.
 
