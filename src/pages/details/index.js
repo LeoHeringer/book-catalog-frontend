@@ -9,7 +9,6 @@ const BookComponent = () => {
     const [detailedBook, setDetailedBook] = useState(null);
 
     useEffect(() => {
-        // Fetch detailed book information
         fetch(`http://localhost:8000/api/get-book?id=${id}`)
             .then(response => {
                 if (!response.ok) {
@@ -32,7 +31,6 @@ const BookComponent = () => {
                 setRecommendedBooks([]);
             });
 
-        // Fetch recommended books for the current book
         fetch(`http://localhost:8000/api/get-recommended-books?id=${id}`)
             .then(response => {
                 if (!response.ok) {
